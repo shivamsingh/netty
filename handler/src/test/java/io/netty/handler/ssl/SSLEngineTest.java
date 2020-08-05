@@ -3969,8 +3969,10 @@ public abstract class SSLEngineTest {
             ssc.delete();
         }
 
-        assertEquals(SslUtils.isTLSv13EnabledByJDK(), arrayContains(clientProtocols, PROTOCOL_TLS_V1_3));
-        assertEquals(SslUtils.isTLSv13EnabledByJDK(), arrayContains(serverProtocols, PROTOCOL_TLS_V1_3));
+        assertEquals(SslProvider.isTlsv13EnabledByDefault(sslClientProvider()),
+                arrayContains(clientProtocols, PROTOCOL_TLS_V1_3));
+        assertEquals(SslProvider.isTlsv13EnabledByDefault(sslServerProvider()),
+                arrayContains(serverProtocols, PROTOCOL_TLS_V1_3));
     }
 
     private static boolean arrayContains(String[] array, String value) {
