@@ -94,8 +94,8 @@ class Hidden {
             // Let's whitelist SSLEngineImpl.unwrap(...) for now as it may fail otherwise for TLS 1.3.
             // See https://mail.openjdk.java.net/pipermail/security-dev/2020-August/022271.html
             builder.allowBlockingCallsInside(
-                    "sun.security.ssl.SSLEngineImpl",
-                    "unwrap");
+                    "sun.security.provider.NativePRNG$NonBlocking",
+                    "engineNextBytes");
 
             builder.nonBlockingThreadPredicate(new Function<Predicate<Thread>, Predicate<Thread>>() {
                 @Override
