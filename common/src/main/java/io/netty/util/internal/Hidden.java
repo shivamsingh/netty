@@ -91,7 +91,8 @@ class Hidden {
                     "io.netty.handler.ssl.ReferenceCountedOpenSslClientContext$ExtendedTrustManagerVerifyCallback",
                     "verify");
 
-            // Let's whitelist SSLEngineImpl.unwrap(...) for now as it may fail otherwise for TLS 1.3.
+            // Let's whitelist sun.security.provider.NativePRNG$NonBlocking for now as it may fail otherwise
+            // for TLS 1.3.
             // See https://mail.openjdk.java.net/pipermail/security-dev/2020-August/022271.html
             builder.allowBlockingCallsInside(
                     "sun.security.provider.NativePRNG$NonBlocking",
